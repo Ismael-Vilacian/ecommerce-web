@@ -1,0 +1,17 @@
+table{
+    width: 100%;
+  }  
+  .estiloCard{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0px 31px;
+    background-color: #272c86;
+
+  }
+  .titulo{
+    margin: 9px 4px 9px;
+    color: white;
+    font: arial;
+    font-weight: bold;
+  }
