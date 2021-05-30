@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteDto } from 'src/model/cliente-dto';
 import { ClienteService } from '../cliente.service';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-cliente',
@@ -10,7 +11,8 @@ import { ClienteService } from '../cliente.service';
 export class ClienteComponent implements OnInit {
 
   constructor(
-    private clienteService: ClienteService
+    private clienteService: ClienteService,
+    private location: Location
   ) { }
 
   displayedColumns: string[] = ['idUser', 'nome', 'cpf'];
@@ -40,7 +42,12 @@ export class ClienteComponent implements OnInit {
   }
 
   salvar(): void{
-    this.clienteService.salvarCliente(this.cliente);
+    this.clienteService.salvarCliente(this.cliente).subscribe((dados) => {
+      this.clienteService.showMessage('Cliente salvo com sucesso!', false);
+      this.clientes.push(dados);
+      this.dataSource = this.clientes;
+      location.reload();
+    });
   }
 
 }

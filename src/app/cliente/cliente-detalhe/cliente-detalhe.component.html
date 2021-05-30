@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-header">
+        Manutanção de clientes:
+    </div>
+
+    <div class="card-header">
+        <div class="card-container">
+            <div>
+                <form [formGroup]="formCliente" (ngSubmit)="onSubmit" class="form-ecemplo">
+                    
+                    <div style="display: none">
+                        <mat-form-field class="exemplo-full-width">
+                            <mat-label>ID</mat-label>
+                            <input matInput formControlName="idUser">
+                        </mat-form-field>
+                    </div>
+
+                    <mat-form-field class="exemplo-full-width">
+                        <mat-label>Nome</mat-label>
+                        <input type="text" matInput placeholder="Ex: João" formControlName="nome"
+                        pattern="[a-zA-Z]*" required>
+                        <mat-error *ngIf="isFieldInvalid('nome')">
+                            Nome obrigatório!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="exemplo-full-width">
+                        <mat-label>CPF</mat-label>
+                        <input type="text" matInput placeholder="000.000.000-00" formControlName="cpf"
+                        pattern="[1-9]*" required>
+                        <mat-error *ngIf="isFieldInvalid('cpf')">
+                            CPF obrigatório!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Data de nascimento</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="dataNascimento">
+                        <mat-datepicker-toggler matSuffix [for]="picker"></mat-datepicker-toggler>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    
+                    <hr>
+
+                    <div class="buttonCliente">
+                        <button mat-flat-button color="primary" type="submit">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
