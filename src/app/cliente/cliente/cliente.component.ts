@@ -15,8 +15,14 @@ export class ClienteComponent implements OnInit {
 
   displayedColumns: string[] = ['idUser', 'nome', 'cpf'];
 
-  //clientes: ClienteDto[] = [
-    //{ idUser: 1, nome: 'kkkk11', cpf: '123.123.123-12', sexo: 'm', dataNascimento: new Date(1995, 11, 17), versao: 1 },
+  cliente: ClienteDto = { 
+    idUser: 0, 
+    nome: 'Service angular', 
+    cpf: '70249731100', 
+    sexo: 'm', 
+    dataNascimento: new Date(1995, 11, 17), 
+    versao: 1 
+  };
     //{ idUser: 2, nome: 'kkkk22', cpf: '222.222.222-22', sexo: 'm', dataNascimento: new Date(1995, 11, 17), versao: 1 },
     //{ idUser: 3, nome: 'kkkk33', cpf: '333.333.333-33', sexo: 'm', dataNascimento: new Date(1995, 11, 17), versao: 1 }
   //];
@@ -31,6 +37,10 @@ export class ClienteComponent implements OnInit {
       this.clientes = dados;
       this.dataSource = this.clientes;
     })
+  }
+
+  salvar(): void{
+    this.clienteService.salvarCliente(this.cliente);
   }
 
 }
