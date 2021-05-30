@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, } from '@angular/material/core';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { DateAdapter, ErrorStateMatcher, MAT_DATE_FORMATS, MAT_DATE_LOCALE, } from '@angular/material/core';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter'
 import { ClienteDto } from 'src/model/cliente-dto';
 import { ClienteService } from '../cliente.service';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-cliente-detalhe',
@@ -46,15 +53,20 @@ export class ClienteDetalheComponent implements OnInit {
   }
 
   onSubmit(): void {
-
+    this.cliente = this.formCliente.value;
+    this.clienteService.salvarCliente(this.cliente).subscribe(() => {
+      this.clienteService.showMessage('Cliente salvo com sucesso!', false);
+    });
   }
 
-  isFieldInvalid(field: string) {
-    return (
-      (!this.formCliente.get(field)?.valid && this.formCliente.get(field)?.touched) ||
-      (this.formCliente.get(field)?.untouched && this.formSubmitAttempt) ||
-      (this.formCliente.get(field)?.errors)
-    );
+  isErrorState(control: FormControl | null, form: FormGroup | NgForm | null): boolean {
+    return false;
   }
+
+  get getControl(){
+    return this.formCliente.controls;
+  }
+
+  
 
 }

@@ -26,7 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatNativeDateModule,
+    MatNativeDateModule
     
     
   ]

@@ -7,6 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClienteModule } from './cliente/cliente.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {IConfig, NgxMaskModule} from 'ngx-mask';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
+
 
 @NgModule({
   declarations: [
@@ -18,7 +22,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BrowserAnimationsModule, 
     ClienteModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    NgxMaskModule.forRoot()
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
