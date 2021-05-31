@@ -7,8 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClienteModule } from './cliente/cliente.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {IConfig, NgxMaskModule} from 'ngx-mask';
+import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -19,13 +20,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     ClienteModule,
     HttpClientModule,
     MatSnackBarModule,
     MatDatepickerModule,
-    NgxMaskModule.forRoot()
-  
+    NgxMaskModule.forRoot(),
+    RouterModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
