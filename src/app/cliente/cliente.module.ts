@@ -18,7 +18,8 @@ import { ClienterouteModule } from './clienteroute/clienteroute.module';
     ClienteDetalheComponent
   ],
   exports: [
-    ClienteComponent
+    ClienteComponent,
+    ClienteDetalheComponent
   ],
   imports: [
     CommonModule,

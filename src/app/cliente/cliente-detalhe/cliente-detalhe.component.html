@@ -1,52 +1,53 @@
 <div class="card">
     <div class="card-header">
-        Manutanção de clientes:
+        Manutenção de Clientes:
     </div>
-
-    <div class="card-header">
+    <div class="card-body">
         <div class="card-container">
             <div>
-                <form [formGroup]="formCliente" (ngSubmit)="onSubmit" class="form-ecemplo">
-
+                <form [formGroup]="formCliente" (ngSubmit)="onSubmit" class="form-exemplo">
                     <div style="display: none">
-                        <mat-form-field class="exemplo-full-width">
+                        <mat-form-field class="example-full-width">
                             <mat-label>ID</mat-label>
                             <input matInput formControlName="idUser">
                         </mat-form-field>
                     </div>
 
-                    <mat-form-field class="exemplo-full-width">
+                    <mat-form-field class="example-full-width">
                         <mat-label>Nome</mat-label>
-                        <input type="text" matInput placeholder="Ex: João" formControlName="nome"
-                        pattern="[a-zA-Z]*" required>
+                        <input type="text" matInput placeholder="Ex. João" formControlName="nome" required>
                         <mat-error *ngIf="getControl.nome.hasError('nome') && !getControl.nome.hasError('required')">
-                            Nome obrigatório!
+                            por favor entre com nome válido!
                         </mat-error>
                     </mat-form-field>
 
-                    <mat-form-field class="exemplo-full-width">
+                    <mat-form-field class="example-full-width">
                         <mat-label>CPF</mat-label>
-                        <input type="text" matInput placeholder="000.000.000-00" formControlName="cpf"
-                        pattern="[1-9]*" required>
+                        <input type="text" matInput placeholder="Ex: 999.999.999-99" mask="000.000.000-99" required
+                            formControlName="cpf">
                         <mat-error *ngIf="getControl.cpf.hasError('cpf') && !getControl.cpf.hasError('required')">
-                            CPF obrigatório!
+                            por favor entre com cpf válido!
                         </mat-error>
                     </mat-form-field>
 
-                    <mat-form-field appearance="fill">
-                        <mat-label>Data de nascimento</mat-label>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Data de Nascimento</mat-label>
                         <input matInput [matDatepicker]="picker" formControlName="dataNascimento">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
-                      </mat-form-field>
-                    
+                    </mat-form-field>
+
                     <hr>
 
-                    <div class="buttonCliente">
-                        <button mat-flat-button (click)="onSubmit()" color="primary" type="submit">Salvar</button>
-                    </div>
+                    <button mat-button type="submit" (click)="onSubmit()" color="primary"> Salvar </button>
+
+
                 </form>
             </div>
+
         </div>
+
     </div>
+
 </div>

@@ -1,3 +1,12 @@
 .buttonCliente{
     margin-left: 18px;
   }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 80%;
+  }
+  
+  .example-full-width {
+    width: 60%;
+  }
