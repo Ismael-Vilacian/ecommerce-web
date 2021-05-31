@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
 import { ClienterouteModule } from './clienteroute/clienteroute.module';
+import {MatInputModule} from "@angular/material/input";
 
 
 
@@ -27,11 +28,12 @@ import { ClienterouteModule } from './clienteroute/clienteroute.module';
     MatButtonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
     ClienterouteModule
-    
-    
+
+
   ]
 })
 export class ClienteModule { }

@@ -10,6 +10,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { RouterModule } from '@angular/router';
+import {MatInputModule} from "@angular/material/input";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 //export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -26,7 +28,9 @@ import { RouterModule } from '@angular/router';
     MatSnackBarModule,
     MatDatepickerModule,
     NgxMaskModule.forRoot(),
-    RouterModule
+    RouterModule,
+    MatInputModule,
+    MatFormFieldModule
 
   ],
   providers: [],

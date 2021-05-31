@@ -17,13 +17,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './cliente-detalhe.component.html',
   styleUrls: ['./cliente-detalhe.component.css'],
   providers: [
-    // The locale would typically be provided on the root module of your application. We do it at
-    // the component level here, due to limitations of our example generation script.
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
-
-    // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
-    // `MatMomentDateModule` in your applications root module. We provide it at the component level
-    // here, due to limitations of our example generation script.
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
@@ -45,11 +39,18 @@ export class ClienteDetalheComponent implements OnInit {
 
   ngOnInit(): void {
     this.formCliente = this.fb.group({
-      idUser: [this.cliente.idUser],
-      nome: [this.cliente.nome, [Validators.required, Validators.minLength(3)]],
-      cpf: [this.cliente.cpf, [Validators.required]],
-      dataNascimento: [this.cliente.dataNascimento]
-    })
+      idUser: [],
+      nome: ['', [Validators.required, Validators.minLength(4)]],
+      cpf: ['', [Validators.required]],
+      primeiroNome: ['', [Validators.required]],
+      dataNascimento: ['', [Validators.required]]
+    });
+    //this.formCliente = this.fb.group({
+      //idUser: [this.cliente.idUser],
+      //nome: [this.cliente.nome, [Validators.required, Validators.minLength(3)]],
+      //cpf: [this.cliente.cpf, [Validators.required]],
+      //dataNascimento: [this.cliente.dataNascimento]
+    //})
   }
 
   onSubmit(): void {
@@ -67,6 +68,6 @@ export class ClienteDetalheComponent implements OnInit {
     return this.formCliente.controls;
   }
 
-  
+
 
 }
