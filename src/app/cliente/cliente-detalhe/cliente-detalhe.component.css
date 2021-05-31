@@ -10,3 +10,25 @@
   .example-full-width {
     width: 60%;
   }
+
+  .margemForm{
+    margin-left: 17px;
+    margin-top: 19px;
+  }
+
+  .card-personalizado{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    color: white;
+    padding: 8px 31px;
+    font-weight: bold;
+    background-color: #272c86;
+  }
+  svg{
+    width: 20px;
+    height: 20px;
+    color: white;
+    margin-left: -17px;
+    margin-right: 8px;
+  }
