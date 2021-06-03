@@ -43,12 +43,42 @@ export class ClienteDetalheComponent implements OnInit {
   inscricao: Subscription;
 
   ngOnInit(): void {
-    
 
+    this.inscricao = this.route.params.subscribe(
+      (params: Params) => {
+        const id: number = +params.id;
+        if (id) {
+          this.clienteService.buscarClientesPorId(id).subscribe(dados => {
+            this.cliente = dados;
+            this.formCliente = this.fb.group({     // {5}
+              id: [this.cliente.idUser],
+              nome: [this.cliente.nome, [Validators.required, Validators.minLength(3)]],
+              cpf: [this.cliente.cpf, Validators.required],
+              dataNascimento: [this.cliente.dataNascimento]
+            });
+            console.log(this.formCliente);
+          }, (error: any) => {console.error(error); });
+        } else {
+          this.cliente = {
+            id: null,
+            nome: '',
+            cpf: '',
+            dataNascimento: null,
+            versao: null
+          };
+          this.formCliente = this.fb.group({     // {5}
+            id: [this.cliente.idUser],
+            nome: [this.cliente.nome, Validators.required],
+            cpf: [this.cliente.cpf, Validators.required],
+            dataNascimento: [this.cliente.dataNascimento]
+          });
+        }
+      });
+/*
     this.inscricao = this.route.params.subscribe((param: Params) => {
       const id: number = +param.id;
       if (id) {
-        this.clienteService.buscarClientesPorId(id).subscribe(cliente =>{
+        this.clienteService.buscarClientesPorId(id).subscribe(cliente => {
           this.formCliente = this.fb.group({
             idUser: [cliente.idUser],
             nome: [cliente.nome, [Validators.required, Validators.minLength(4)]],
@@ -56,7 +86,7 @@ export class ClienteDetalheComponent implements OnInit {
             dataNascimento: [cliente.dataNascimento, [Validators.required]]
           });
         });
-      }else{
+      } else {
         this.formCliente = this.fb.group({
           idUser: [],
           nome: ['', [Validators.required, Validators.minLength(4)]],
@@ -66,6 +96,7 @@ export class ClienteDetalheComponent implements OnInit {
       }
     }
     )
+*/
   }
 
   onSubmit(): void {
