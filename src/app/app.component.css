@@ -1,0 +1,11 @@
+.colorBar{
+    background-color: #272c86 !important;
+    color: white !important;
+}
+svg{
+    width: 20px;
+    height: 20px;
+    color: white;
+    margin-left: -6px;
+    margin-right: 8px;
+  }

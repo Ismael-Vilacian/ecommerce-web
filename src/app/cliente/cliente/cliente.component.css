@@ -25,3 +25,8 @@ table{
   .buttonCliente{
     margin-left: 18px;
   }
+  .scaleForm{
+    margin-top: -48px;
+    margin-left: -24px;
+    margin-right: -24px;
+}

@@ -4,6 +4,8 @@ import { DateAdapter, ErrorStateMatcher, MAT_DATE_FORMATS, MAT_DATE_LOCALE, } fr
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter'
 import { ClienteDto } from 'src/model/cliente-dto';
 import { ClienteService } from '../cliente.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -30,12 +32,15 @@ export class ClienteDetalheComponent implements OnInit {
 
   constructor(
     private clienteService: ClienteService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   formCliente: FormGroup;
   formSubmitAttempt: boolean;
   cliente: ClienteDto;
+  inscricao: Subscription;
 
   ngOnInit(): void {
     this.formCliente = this.fb.group({
@@ -45,12 +50,10 @@ export class ClienteDetalheComponent implements OnInit {
       primeiroNome: ['', [Validators.required]],
       dataNascimento: ['', [Validators.required]]
     });
-    //this.formCliente = this.fb.group({
-      //idUser: [this.cliente.idUser],
-      //nome: [this.cliente.nome, [Validators.required, Validators.minLength(3)]],
-      //cpf: [this.cliente.cpf, [Validators.required]],
-      //dataNascimento: [this.cliente.dataNascimento]
-    //})
+
+    this.inscricao = this.route.params.subscribe((param: Params) =>{
+      const id: number = +param.id;
+    })
   }
 
   onSubmit(): void {
@@ -58,6 +61,7 @@ export class ClienteDetalheComponent implements OnInit {
     this.clienteService.salvarCliente(this.cliente).subscribe(() => {
       this.clienteService.showMessage('Cliente salvo com sucesso!', false);
     });
+    this.router.navigate(['/cliente']);
   }
 
   isErrorState(control: FormControl | null, form: FormGroup | NgForm | null): boolean {
