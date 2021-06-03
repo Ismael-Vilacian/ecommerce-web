@@ -34,7 +34,7 @@ export class ClienteService {
   }
 
   editarCliente(cliente: ClienteDto): Observable<ClienteDto> {
-    return this.httpClient.post<ClienteDto>(this.url + '/edit', cliente).pipe(
+    return this.httpClient.put<ClienteDto>(this.url + '/edit', cliente).pipe(
       map(obj => obj),
       catchError((e) => this.errorHandler(e))
     );
@@ -62,7 +62,7 @@ export class ClienteService {
   }
 
   deletarCliente(idUser: number): Observable<ClienteDto> {
-    return this.httpClient.get<ClienteDto>(this.url + '/delete/' + idUser).pipe(
+    return this.httpClient.delete<ClienteDto>(this.url + '/delete/' + idUser).pipe(
       map((cliente) => cliente),
       catchError( (e) => this.errorHandler(e))
     );

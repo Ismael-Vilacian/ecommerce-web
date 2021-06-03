@@ -52,6 +52,7 @@ export class ClienteComponent implements OnInit {
     });
   }
   editarCliente(cliente: ClienteDto): void{
+    debugger
     this.router.navigate(['/cliente-detalhe', cliente.idUser]);
   }
   deletarCliente(cliente: ClienteDto): void{
