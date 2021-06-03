@@ -43,17 +43,29 @@ export class ClienteDetalheComponent implements OnInit {
   inscricao: Subscription;
 
   ngOnInit(): void {
-    this.formCliente = this.fb.group({
-      idUser: [],
-      nome: ['', [Validators.required, Validators.minLength(4)]],
-      cpf: ['', [Validators.required]],
-      primeiroNome: ['', [Validators.required]],
-      dataNascimento: ['', [Validators.required]]
-    });
+    
 
-    this.inscricao = this.route.params.subscribe((param: Params) =>{
+    this.inscricao = this.route.params.subscribe((param: Params) => {
       const id: number = +param.id;
-    })
+      if (id) {
+        this.clienteService.buscarClientesPorId(id).subscribe(cliente =>{
+          this.formCliente = this.fb.group({
+            idUser: [cliente.idUser],
+            nome: [cliente.nome, [Validators.required, Validators.minLength(4)]],
+            cpf: [cliente.cpf, [Validators.required]],
+            dataNascimento: [cliente.dataNascimento, [Validators.required]]
+          });
+        });
+      }else{
+        this.formCliente = this.fb.group({
+          idUser: [],
+          nome: ['', [Validators.required, Validators.minLength(4)]],
+          cpf: ['', [Validators.required]],
+          dataNascimento: ['', [Validators.required]]
+        });
+      }
+    }
+    )
   }
 
   onSubmit(): void {
@@ -68,7 +80,7 @@ export class ClienteDetalheComponent implements OnInit {
     return false;
   }
 
-  get getControl(){
+  get getControl() {
     return this.formCliente.controls;
   }
 

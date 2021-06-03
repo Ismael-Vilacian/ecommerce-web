@@ -54,4 +54,10 @@ export class ClienteService {
     });
   }
 
+  buscarClientesPorId(id: number): Observable<ClienteDto> {
+    return this.httpClient.get<ClienteDto>(this.url + id).pipe(
+      map((cliente) => cliente)
+    );
+  }
+
 }
