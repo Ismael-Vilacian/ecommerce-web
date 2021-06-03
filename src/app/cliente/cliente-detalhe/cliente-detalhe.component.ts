@@ -50,7 +50,7 @@ export class ClienteDetalheComponent implements OnInit {
         if (id) {
           this.clienteService.buscarClientesPorId(id).subscribe(dados => {
             this.cliente = dados;
-            this.formCliente = this.fb.group({     // {5}
+            this.formCliente = this.fb.group({
               id: [this.cliente.idUser],
               nome: [this.cliente.nome, [Validators.required, Validators.minLength(3)]],
               cpf: [this.cliente.cpf, Validators.required],
@@ -59,52 +59,31 @@ export class ClienteDetalheComponent implements OnInit {
             console.log(this.formCliente);
           }, (error: any) => {console.error(error); });
         } else {
-          this.cliente = {
-            id: null,
-            nome: '',
-            cpf: '',
-            dataNascimento: null,
-            versao: null
-          };
-          this.formCliente = this.fb.group({     // {5}
-            id: [this.cliente.idUser],
-            nome: [this.cliente.nome, Validators.required],
-            cpf: [this.cliente.cpf, Validators.required],
-            dataNascimento: [this.cliente.dataNascimento]
+          this.formCliente = this.fb.group({
+            idUser: [],
+            nome: ['', [Validators.required]],
+            cpf: ['', [Validators.required]],
+            dataNascimento: ['']
           });
         }
       });
-/*
-    this.inscricao = this.route.params.subscribe((param: Params) => {
-      const id: number = +param.id;
-      if (id) {
-        this.clienteService.buscarClientesPorId(id).subscribe(cliente => {
-          this.formCliente = this.fb.group({
-            idUser: [cliente.idUser],
-            nome: [cliente.nome, [Validators.required, Validators.minLength(4)]],
-            cpf: [cliente.cpf, [Validators.required]],
-            dataNascimento: [cliente.dataNascimento, [Validators.required]]
-          });
-        });
-      } else {
-        this.formCliente = this.fb.group({
-          idUser: [],
-          nome: ['', [Validators.required, Validators.minLength(4)]],
-          cpf: ['', [Validators.required]],
-          dataNascimento: ['', [Validators.required]]
-        });
-      }
-    }
-    )
-*/
   }
 
   onSubmit(): void {
+
     this.cliente = this.formCliente.value;
-    this.clienteService.salvarCliente(this.cliente).subscribe(() => {
-      this.clienteService.showMessage('Cliente salvo com sucesso!', false);
-    });
-    this.router.navigate(['/cliente']);
+    if(this.cliente.idUser == null){
+      this.clienteService.salvarCliente(this.cliente).subscribe(() => {
+        this.clienteService.showMessage('Cliente salvo com sucesso!', false);
+      });
+      this.router.navigate(['/cliente']);
+    }else{
+      this.clienteService.editarCliente(this.cliente).subscribe(() => {
+        this.clienteService.showMessage('Cliente salvo com sucesso!', false);
+      });
+      this.router.navigate(['/cliente']);
+    }
+
   }
 
   isErrorState(control: FormControl | null, form: FormGroup | NgForm | null): boolean {

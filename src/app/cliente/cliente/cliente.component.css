@@ -15,13 +15,25 @@ table{
     font: arial;
     font-weight: bold;
   }
-  svg{
+  .svgCliente{
     width: 20px;
     height: 20px;
-    color: white;
+    color: rgb(255, 255, 255);
     margin-left: -17px;
     margin-right: 8px;
   }
+  .svgDelete{
+    width: 20px;
+    height: 20px;
+    color: rgb(185, 4, 4);
+    margin-left: -17px;
+    margin-right: 8px;
+    
+  }
+  .positionSvg{
+    padding-left: -37px;
+  }
+
   .buttonCliente{
     margin-left: 18px;
   }
@@ -29,4 +41,20 @@ table{
     margin-top: -48px;
     margin-left: -24px;
     margin-right: -24px;
+}
+.svgEdit{
+  width: 20px;
+  height: 20px;
+  color: rgb(17, 44, 134);
+  margin-left: -17px;
+  margin-right: 8px;
+}
+.classButton{
+  outline: thin dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: 0px;
+    background: none;
+    padding-right: 0px;
+    padding-bottom: 18px;
+    padding-left: 37px;
 }

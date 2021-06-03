@@ -54,9 +54,17 @@ export class ClienteService {
     });
   }
 
-  buscarClientesPorId(id: number): Observable<ClienteDto> {
-    return this.httpClient.get<ClienteDto>(this.url + id).pipe(
-      map((cliente) => cliente)
+  buscarClientesPorId(idUser: number): Observable<ClienteDto> {
+    return this.httpClient.get<ClienteDto>(this.url + '/' + idUser).pipe(
+      map((cliente) => cliente),
+      catchError( (e) => this.errorHandler(e))
+    );
+  }
+
+  deletarCliente(idUser: number): Observable<ClienteDto> {
+    return this.httpClient.get<ClienteDto>(this.url + '/delete/' + idUser).pipe(
+      map((cliente) => cliente),
+      catchError( (e) => this.errorHandler(e))
     );
   }
 
