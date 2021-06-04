@@ -12,12 +12,22 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { RouterModule } from '@angular/router';
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { LoginComponent } from './login/login.component';
+import { MatCardModule } from '@angular/material/card';
+import { LoginModule } from './login/login.module';
+import { CarroComponent } from './carro/carro/carro.component';
+import { CarroDetalheComponent } from './carro/carro-detalhe/carro-detalhe.component';
+
+
 
 //export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CarroComponent,
+    CarroDetalheComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,7 +40,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     NgxMaskModule.forRoot(),
     RouterModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatCardModule,
+    LoginModule
 
   ],
   providers: [],
