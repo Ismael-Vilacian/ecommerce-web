@@ -27,11 +27,7 @@ export class ClienteComponent implements OnInit {
     dataNascimento: new Date(1995, 11, 17), 
     versao: 1 
   };
-    //{ idUser: 2, nome: 'kkkk22', cpf: '222.222.222-22', sexo: 'm', dataNascimento: new Date(1995, 11, 17), versao: 1 },
-    //{ idUser: 3, nome: 'kkkk33', cpf: '333.333.333-33', sexo: 'm', dataNascimento: new Date(1995, 11, 17), versao: 1 }
-  //];
 
-  //dataSource = this.clientes;
   
   clientes: ClienteDto[];
   dataSource: any;
@@ -52,10 +48,10 @@ export class ClienteComponent implements OnInit {
     });
   }
   editarCliente(cliente: ClienteDto): void{
-    debugger
     this.router.navigate(['/cliente-detalhe', cliente.idUser]);
   }
   deletarCliente(cliente: ClienteDto): void{
+    debugger
     this.clienteService.deletarCliente(cliente.idUser);
   }
 }

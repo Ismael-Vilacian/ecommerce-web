@@ -10,6 +10,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
 import { ClienterouteModule } from './clienteroute/clienteroute.module';
 import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 
 
@@ -31,7 +32,8 @@ import {MatInputModule} from "@angular/material/input";
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ClienterouteModule
+    ClienterouteModule,
+    MatSelectModule
 
 
   ]

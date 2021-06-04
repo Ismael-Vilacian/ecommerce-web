@@ -62,6 +62,7 @@ export class ClienteService {
   }
 
   deletarCliente(idUser: number): Observable<ClienteDto> {
+    debugger
     return this.httpClient.delete<ClienteDto>(this.url + '/delete/' + idUser).pipe(
       map((cliente) => cliente),
       catchError( (e) => this.errorHandler(e))
