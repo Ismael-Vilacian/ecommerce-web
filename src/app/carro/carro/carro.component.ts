@@ -51,7 +51,7 @@ export class CarroComponent implements OnInit {
     });
   }
   editarCliente(carro: CarroDto): void{
-    this.router.navigate(['/cliente-detalhe', carro.id]);
+    this.router.navigate(['/carro-detalhe', carro.id]);
   }
   deletarCarro(carro: CarroDto): void{
     this.carroService.deletarCarro(carro).subscribe((data) => {
