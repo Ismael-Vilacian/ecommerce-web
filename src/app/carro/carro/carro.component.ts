@@ -16,7 +16,7 @@ export class CarroComponent implements OnInit {
     private router: Router
   ) { }
   
-  displayedColumns: string[] = ['id', 'marca', 'modelo', 'cor', 'anoVeiculo', 'valorDiaria'];
+  displayedColumns: string[] = ['id', 'marca', 'modelo', 'cor', 'anoVeiculo', 'valorDiaria', 'acoes'];
   
   carro: CarroDto = { 
     id: 0,
@@ -32,6 +32,10 @@ export class CarroComponent implements OnInit {
   dataSource: any;
 
   ngOnInit(): void {
+    this.getAll();
+  }
+  
+  getAll(): void{
     this.carroService.listarCarro().subscribe(dados => {
       this.carros = dados;
       this.dataSource = this.carros;
@@ -46,5 +50,13 @@ export class CarroComponent implements OnInit {
       location.reload();
     });
   }
-
+  editarCliente(carro: CarroDto): void{
+    this.router.navigate(['/cliente-detalhe', carro.id]);
+  }
+  deletarCarro(carro: CarroDto): void{
+    this.carroService.deletarCarro(carro).subscribe((data) => {
+      this.carroService.showMessage('Carro deletado com Sucesso!', false);
+      this.getAll();
+    });
+  }
 }

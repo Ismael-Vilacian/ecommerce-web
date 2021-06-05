@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { LoginModule } from './login/login.module';
 import { CarroComponent } from './carro/carro/carro.component';
 import { CarroDetalheComponent } from './carro/carro-detalhe/carro-detalhe.component';
+import {MatTableModule} from "@angular/material/table";
 
 
 
@@ -29,22 +30,23 @@ import { CarroDetalheComponent } from './carro/carro-detalhe/carro-detalhe.compo
     CarroDetalheComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ClienteModule,
-    HttpClientModule,
-    MatSnackBarModule,
-    MatDatepickerModule,
-    NgxMaskModule.forRoot(),
-    RouterModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatCardModule,
-    LoginModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ClienteModule,
+        HttpClientModule,
+        MatSnackBarModule,
+        MatDatepickerModule,
+        NgxMaskModule.forRoot(),
+        RouterModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatCardModule,
+        LoginModule,
+        MatTableModule
 
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

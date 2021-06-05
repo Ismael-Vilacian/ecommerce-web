@@ -61,11 +61,13 @@ export class CarroService {
     );
   }
 
-  deletarCarro(idUser: number): Observable<CarroDto> {
+  deletarCarro(carro: CarroDto): Observable<CarroDto> {
     debugger
-    return this.httpClient.delete<CarroDto>(this.url + '/delete/' + idUser).pipe(
-      map((carro) => carro),
-      catchError( (e) => this.errorHandler(e))
+    const teste = this.httpClient.post<CarroDto>(this.url + '/delete', carro).pipe(
+      map(obj => obj),
+      catchError((e) => this.errorHandler(e))
     );
+
+    return teste
   }
 }
