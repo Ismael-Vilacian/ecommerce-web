@@ -61,12 +61,21 @@ export class ClienteService {
     );
   }
 
-  deletarCliente(idUser: number): Observable<ClienteDto> {
+  deletarCliente(cliente: ClienteDto): Observable<any> {
     debugger
-    return this.httpClient.delete<ClienteDto>(this.url + '/delete/' + idUser).pipe(
-      map((cliente) => cliente),
+    return this.httpClient.post<ClienteDto>(this.url + '/delete', cliente).pipe(
       catchError( (e) => this.errorHandler(e))
     );
+  }
+
+  deletarClientes(cliente: ClienteDto): Observable<ClienteDto> {
+    debugger
+    const teste = this.httpClient.post<ClienteDto>(this.url + '/delete', cliente).pipe(
+      map(obj => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+
+    return teste
   }
 
 }

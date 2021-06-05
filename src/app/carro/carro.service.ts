@@ -18,11 +18,11 @@ export class CarroService {
   ) { }
 
   carros: CarroDto[];
-  url = `${environment.config.URL_API + '/cliente'}`;
+  url = `${environment.config.URL_API + '/carro'}`;
 
   listarCarro(): Observable<CarroDto[]> {
     return this.httpClient.get<CarroDto[]>(this.url).pipe(
-      map((carros) => this.carros)
+      map((carros) => carros)
     );
   }
 

@@ -33,6 +33,10 @@ export class ClienteComponent implements OnInit {
   dataSource: any;
 
   ngOnInit(): void {
+    this.getAll()
+  }
+
+  getAll(): void {
     this.clienteService.listarCliente().subscribe(dados => {
       this.clientes = dados;
       this.dataSource = this.clientes;
@@ -45,13 +49,17 @@ export class ClienteComponent implements OnInit {
       this.clientes.push(dados);
       this.dataSource = this.clientes;
       location.reload();
+      this.getAll();
     });
   }
   editarCliente(cliente: ClienteDto): void{
     this.router.navigate(['/cliente-detalhe', cliente.idUser]);
   }
   deletarCliente(cliente: ClienteDto): void{
-    debugger
-    this.clienteService.deletarCliente(cliente.idUser);
+    
+    this.clienteService.deletarClientes(cliente).subscribe((data) => {
+      this.clienteService.showMessage('Cliente deletado com Sucesso!', false);
+      this.getAll()
+    });
   }
 }
