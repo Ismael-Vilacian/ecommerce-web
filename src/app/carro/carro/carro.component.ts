@@ -36,6 +36,7 @@ export class CarroComponent implements OnInit {
   }
   
   getAll(): void{
+    debugger
     this.carroService.listarCarro().subscribe(dados => {
       this.carros = dados;
       this.dataSource = this.carros;
@@ -50,7 +51,7 @@ export class CarroComponent implements OnInit {
       location.reload();
     });
   }
-  editarCliente(carro: CarroDto): void{
+  editarCarro(carro: CarroDto): void{
     this.router.navigate(['/carro-detalhe', carro.id]);
   }
   deletarCarro(carro: CarroDto): void{

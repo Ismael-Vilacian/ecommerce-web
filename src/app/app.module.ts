@@ -18,6 +18,7 @@ import { LoginModule } from './login/login.module';
 import { CarroComponent } from './carro/carro/carro.component';
 import { CarroDetalheComponent } from './carro/carro-detalhe/carro-detalhe.component';
 import {MatTableModule} from "@angular/material/table";
+import { CarroModule } from './carro/carro.module';
 
 
 
@@ -25,10 +26,7 @@ import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CarroComponent,
-    CarroDetalheComponent,
-
+    AppComponent
   ],
     imports: [
         BrowserModule,
@@ -44,7 +42,8 @@ import {MatTableModule} from "@angular/material/table";
         MatFormFieldModule,
         MatCardModule,
         LoginModule,
-        MatTableModule
+        MatTableModule,
+        CarroModule
 
     ],
   providers: [],

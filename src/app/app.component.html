@@ -13,7 +13,13 @@
                 <a class="nav-link" href="#" routerLink="/cliente-detalhe" routerLinkActive="active-route">Manutenção de Clientes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#" (click)="onLogout()" *ngIf="isLoggedIn$ | async">Logout</a>
+                <a class="nav-link" href="#" routerLink="/carro" routerLinkActive="active-route">Listagem de veiculo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/carro-detalhe" routerLinkActive="active-route">Manutenção de veiculos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" (click)="onLogout()">Logout</a>
             </li>
         </ul>
     </div>

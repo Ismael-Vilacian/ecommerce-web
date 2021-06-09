@@ -35,6 +35,7 @@ export class CarroDetalheComponent implements OnInit {
             this.formCarro = this.fb.group({
               id: [this.carro.id],
               marca: [this.carro.marca],
+              modelo: [this.carro.modelo],
               cor: [this.carro.cor],
               placa: [this.carro.placa],
               anoVeiculo: [this.carro.anoVeiculo],
@@ -46,6 +47,7 @@ export class CarroDetalheComponent implements OnInit {
           this.formCarro = this.fb.group({
             id: [],
             marca: [''],
+            modelo: [''],
             cor: [''],
             placa: [''],
             anoVeiculo: [''],
