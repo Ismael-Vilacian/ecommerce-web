@@ -21,8 +21,7 @@ export class CarroService {
   url = `${environment.config.URL_API + '/carro'}`;
 
   listarCarro(): Observable<CarroDto[]> {
-    
-    return this.httpClient.get<CarroDto[]>(this.url).pipe(
+    return this.httpClient.get<CarroDto[]>(this.url + '/').pipe(
       map((carros) => carros)
     );
   }
@@ -58,7 +57,7 @@ export class CarroService {
   buscarCarroPorId(id: number): Observable<CarroDto> {
     return this.httpClient.get<CarroDto>(this.url + '/' + id).pipe(
       map((carro) => carro),
-      catchError( (e) => this.errorHandler(e))
+      catchError((e) => this.errorHandler(e))
     );
   }
 

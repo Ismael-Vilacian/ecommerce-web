@@ -46,12 +46,12 @@ export class CarroDetalheComponent implements OnInit {
         } else {
           this.formCarro = this.fb.group({
             id: [],
-            marca: [''],
-            modelo: [''],
-            cor: [''],
-            placa: [''],
-            anoVeiculo: [''],
-            valorDiaria: ['']
+            marca: ['',],
+            modelo: ['',],
+            cor: ['',],
+            placa: ['',],
+            anoVeiculo: ['',],
+            valorDiaria: [,]
           });
         }
       });

@@ -51,7 +51,7 @@ export class ClienteDetalheComponent implements OnInit {
           this.clienteService.buscarClientesPorId(id).subscribe(dados => {
             this.cliente = dados;
             this.formCliente = this.fb.group({
-              id: [this.cliente.idUser],
+              idUser: [this.cliente.idUser],
               nome: [this.cliente.nome, [Validators.required, Validators.minLength(3)]],
               cpf: [this.cliente.cpf, Validators.required],
               dataNascimento: [this.cliente.dataNascimento]
